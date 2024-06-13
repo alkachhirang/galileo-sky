@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         {/* <!-- Primary Meta Tags --> */}
-        <title>galileo-sky</title>
+        <title>GALILEO-SKY</title>
         <meta name="title" content="galileo-sky" />
         <meta name="description" content="BEYOND ENTERTAINMENT" />
 
