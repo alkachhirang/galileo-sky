@@ -143,7 +143,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { footerIcons, footerLink, footerLinks } from "./common/Helper";
+import { footerIcons, footerLinks } from "./common/Helper";
 
 export default function Footer() {
     const [formData, setFormData] = useState({
@@ -208,23 +208,21 @@ export default function Footer() {
     }, [showSuccessPopup]);
 
     return (
-        <div className='pt-[80px]'>
+        <div className='lg:pt-[80px] md:pt-[64px] pt-[48px]'>
             <div className='container xl:max-w-[1164px] px-3 mx-auto'>
                 <div className="flex flex-row flex-wrap justify-between">
                     <div className="lg:w-5/12 w-full ">
                         <Link href="">
-                            <img src="/assets/images/svg/footerLogo.svg" alt="footerlogo" width={289} height={53} className="" />
+                            <img src="/assets/images/svg/footerLogo.svg" alt="footerlogo" width={289} height={53} className="md:w-[289px] w-[200px]" />
                         </Link>
-                        <p className="ff_poppins text-offBlack text-base font-normal opacity-[70%] mt-4 mb-6">Galileo Sky, founded by industry experts, is redefining the gaming landscape. With a blend of groundbreaking technology and immersive entertainment, we create world-class gaming experiences and thriving digital economies that captivate and inspire
+                        <p className="ff_poppins text-offBlack text-sm sm:text-base font-normal opacity-[70%] mt-4 mb-6">Galileo Sky, founded by industry experts, is redefining the gaming landscape. With a blend of groundbreaking technology and immersive entertainment, we create world-class gaming experiences and thriving digital economies that captivate and inspire
                         </p>
                         <div className="flex gap-[16px] items-center">
                             {footerIcons.map((icon, index) => {
                                 return (
-                                    <div key={index}>
-                                        <a href={icon.link} aria-label={icon.label} target='blank' className="hover:translate-y-[-7px]">
-                                            {icon.footersvg}
-                                        </a>
-                                    </div>
+                                    <a key={index} href={icon.link} aria-label={icon.label} target='blank' className="w-[36px] h-[36px] rounded-[100%] border border-solid border-darkRed flex justify-center items-center hover:scale-110  transition-all duration-300 ease-linear">
+                                        {icon.footersvg}
+                                    </a>
                                 );
                             })}
                         </div>
@@ -249,7 +247,7 @@ export default function Footer() {
                             <div className="sm:w-7/12 w-full sm:order-2 order-1">
                                 <p className="text-base font-normal ff_poppins text-offBlack mb-4">Get Connected</p>
                                 <form onSubmit={handleSubmit} className="sm:max-w-[347px] h-[66px] max-w-[500px] bg-grey flex items-center w-full border border-solid border-offWhite pl-[21px] p-[7px] rounded-[10px]">
-                                    <input required className="text-base !text-offBlack bg-transparent ff_poppins font-normal outline-none w-full"
+                                    <input required className="text-base !text-offBlack placeholder:text-offBlack placeholder:!text-opacity-[70%] !text-opacity-[70%] bg-transparent ff_poppins font-normal outline-none w-full"
                                         type="text"
                                         placeholder="Email Here"
                                         id="email"
@@ -268,19 +266,19 @@ export default function Footer() {
                                         <p className="sm:mb-[40px] mb-[25px] text-black text-xl sm:text-3xl font-semibold font-plusJkarta text-center leading-lg">Your form submitted successfully!</p>
                                         <div className="flex justify-center items-center">
                                             <div className='w-full'>
-                                                <button onClick={handlePopupClose}  className="ff_poppins text-offWhite font-normal text-base rounded-[8px] py-[12px] px-[28px] md:py-[13px] md:px-[32px] hover:bg-transparent hover:text-darkRed border border-solid border-transparent hover:border-darkRed bg-darkRed transition-all duration-300 ease-linear ">Close</button>
+                                                <button onClick={handlePopupClose} className="ff_poppins text-offWhite font-normal text-base rounded-[8px] py-[12px] px-[28px] md:py-[13px] md:px-[32px] hover:bg-transparent hover:text-darkRed border border-solid border-transparent hover:border-darkRed bg-darkRed transition-all duration-300 ease-linear ">Close</button>
                                             </div>
                                         </div>
                                     </div>
                                 )}
-                                <p className="text-base font-normal ff_poppins opacity-[70%] text-offBlack mt-4 sm:max-w-[338px] pe-12">Your email address is very safe with Galileo Sky. You will only receive our gaming updates</p>
+                                <p className="sm:text-base text-sm font-normal ff_poppins opacity-[70%] text-offBlack mt-4 sm:max-w-[338px] pe-12">Your email address is very safe with Galileo Sky. You will only receive our gaming updates</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="w-full h-[1px] bg-[#01010126] mt-[45px]"></div>
-            <p className="text-center text-offBlack opacity-[70%] text-base font-normal ff_poppins py-[24px]">
+            <div className="w-full h-[1px] bg-[#01010126] mt-[35px]"></div>
+            <p className="text-center text-offBlack opacity-[70%] text-sm sm:text-base font-normal ff_poppins py-[24px]">
                 {new Date().getFullYear()} Copyrights Galileo Sky, All Rights Reserved
             </p>
         </div>

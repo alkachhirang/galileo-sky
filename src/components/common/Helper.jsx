@@ -1,4 +1,4 @@
-import { Discord, In, Teligram, Twitter } from "./icon";
+import { Discord, DiscordSvg, In, InSvg, Teligram, TeligramSvg, Twitter, TwitterSvg } from "./icon";
 //------------NAVBAR-------------
 export const navData = [
     {
@@ -22,13 +22,48 @@ export const navData = [
         Path: "#Testimonials",
     },
 ];
+//--------------HEADER---------------
+export const headerIcons = [
+    {
+        link: "https://x.com/login",
+        headersvg: <TwitterSvg />,
+        label: "Twitter"
+    },
+    {
+        link: "https://discord.com/",
+        headersvg: <DiscordSvg />,
+        label: "Discord",
+    },
+    {
+        link: "https://web.telegram.org/a/",
+        headersvg: <TeligramSvg />,
+        label: "Teligram",
+    },
+    {
+        link: "https://www.linkedin.com/login",
+        headersvg: <InSvg />,
+        label: "In",
+    },
+];
+//-----------DROPDOWN------------
+export const DropdownData = [
+    {
+        title: "Game 1",
+    },
+    {
+        title: "Game 2",
+    },
+    {
+        title: "Game 3",
+    },
+];
 
 //------------footer-------------
 export const footerIcons = [
     {
         link: "https://www.linkedin.com/login",
-        footersvg: <In />,
-        label: "In",
+        footersvg: <In/>,
+        label: "in",
     },
     {
         link: "https://discord.com/",
@@ -40,11 +75,11 @@ export const footerIcons = [
         footersvg: <Teligram />,
         label: "Teligram",
     },
-    // {
-    //     link: "https://x.com/login",
-    //     footersvg: <Twitter />,
-    //     label: "Twitter"
-    // },
+    {
+        link: "https://x.com/login",
+        footersvg: <Twitter />,
+        label: "Twitter"
+    },
 ];
 export const footerLinks = [
     {

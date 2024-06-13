@@ -3,13 +3,25 @@
 @tailwind components;
 @tailwind utilities;
 
-.ff_inter{
+.ff_inter {
     font-family: "inter", sans-serif;
 }
-.ff_poppins{
+
+.ff_poppins {
     font-family: "Poppins", sans-serif;
 }
-::placeholder{
-    color: #010101 !important;
-    opacity: 70% !important;
+
+@font-face {
+    font-family: "OpenSans";
+    src: url("/assets/font/OpenSans-Regular.ttf") format("truetype");
+}
+
+.ff_opensans {
+    font-family: "OpenSans", sans-serif !important;
+}
+
+
+.dropdown li:hover~div.dropcontent {
+    opacity: 100% !important;
+    height: auto !important;
 }
