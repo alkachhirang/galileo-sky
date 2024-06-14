@@ -1,4 +1,4 @@
-import { Discord, DiscordSvg, In, InSvg, Teligram, TeligramSvg, Twitter, TwitterSvg } from "./icon";
+import { Discord, DiscordSvg, In, InSvg, Teligram, TeligramSvg, Twitter, TwitterSvg } from "./Icon";
 //------------NAVBAR-------------
 export const navData = [
     {

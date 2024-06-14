@@ -74,7 +74,7 @@ const Header = () => {
                     <p className='ff_inter text-lightWhite text-sm font-medium'>Future of Gaming</p>
                 </div>
                 <h1 className='font-normal text-4xl sm:text-6xl md:text-7xl lg:text-8lg xl:text-9xl ff_opensans text-lightWhite text-center mt-4 lg:mt-[10px] leading-xsm mb-4'>BEYOND <span className='text-lightRed'>ENTERTAINMENT</span></h1>
-                <p className='ff_poppins fw-normal text-sm sm:text-base text-lightWhite opacity-[90%] max-w-[809px] text-center sm:px-5 md:px-10 lg:px-0 !leading-normal'>Galileo Sky, founded by industry experts, is redefining the gaming landscape. With a blend of groundbreaking technology and immersive entertainment, we create world-class gaming experiences and thriving digital economies that captivate and inspire</p>
+                <p className='ff_poppins font-normal text-sm sm:text-base text-lightWhite opacity-[90%] max-w-[809px] text-center sm:px-5 md:px-10 lg:px-0 !leading-normal'>Galileo Sky, founded by industry experts, is redefining the gaming landscape. With a blend of groundbreaking technology and immersive entertainment, we create world-class gaming experiences and thriving digital economies that captivate and inspire</p>
             </div>
             <div className="absolute bottom-[4%] z-30 left-0 right-0 flex items-center justify-center">
                 <div
