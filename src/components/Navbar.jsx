@@ -82,7 +82,7 @@ export default function Navbar() {
                     <ul
                         className={` ${nav ? "left-[-100%]" : "left-0 !z-[50]"
                             } flex items-center gap-[24px] max-lg:bg-offBlack lg:flex-row max-lg:justify-center max-lg:flex-col top-0 max-lg:min-h-screen max-lg:w-full max-lg:fixed !z-[50] lg:pl-[60px] xl:pl-[100px] transition-all duration-300 ease-linear`}>
-                        <li className="relative navdrop">
+                        <li className="relative">
                             <Link
                                 onClick={() => setNav(!nav)}
                                 href="#games"
@@ -90,7 +90,6 @@ export default function Navbar() {
                             >
                                 Games <Arrow />
                             </Link>
-                            <Dropdown />
                         </li>
                         <li>
                             <Link
