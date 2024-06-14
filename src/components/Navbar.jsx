@@ -123,7 +123,7 @@ export default function Navbar() {
                     <div className="flex items-center lg:hidden cursor-pointer">
                         <div
                             onClick={() => setNav(!nav)}
-                            className="lg:hidden flex w-[40px] h-[26px] justify-between items-center flex-col z-[50] relative"
+                            className="lg:hidden flex w-[30px] sm:w-[40px] h-[26px] justify-between items-center flex-col z-[50] relative"
                         >
                             <span
                                 className={`${!nav && "rotate-[50deg] translate-y-[22px]"
