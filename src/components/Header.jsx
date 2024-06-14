@@ -6,17 +6,32 @@ import Image from "next/image";
 
 const Header = () => {
     const [open, setOpen] = useState(true);
-    const [presentVideo, setPresentVideo] = useState(0);
     const [toggleScroll, setToggleScroll] = useState(false);
-
+    useEffect(() => {
+        if (toggleScroll === true) {
+            const element = document.getElementById("footer");
+            element?.scrollIntoView({
+                behavior: "smooth",
+                block: "end",
+                inline: "nearest",
+            });
+        } else {
+            const element = document.getElementById("header");
+            element?.scrollIntoView({
+                behavior: "smooth",
+                block: "end",
+                inline: "nearest",
+            });
+        }
+    });
+    //---------------video----------------
+    const [presentVideo, setPresentVideo] = useState(0);
     const videos = [
         "/assets/video/game2.mp4",
         "/assets/video/game3.mp4",
         "/assets/video/game1.mp4",
     ];
-
     const videoRefs = useRef(videos.map(() => React.createRef()));
-
     useEffect(() => {
         const videoElement = videoRefs.current[presentVideo].current;
 
@@ -27,7 +42,6 @@ const Header = () => {
             const handleVideoEnded = () => {
                 setPresentVideo((prev) => (prev + 1) % videos.length);
             };
-
             videoElement.addEventListener("ended", handleVideoEnded);
 
             return () => {
@@ -35,17 +49,6 @@ const Header = () => {
             };
         }
     }, [presentVideo, videos]);
-
-    const scrollToSection = () => {
-        const elementId = toggleScroll ? "footer" : "header";
-        const element = document.getElementById(elementId);
-        element?.scrollIntoView({
-            behavior: "smooth",
-            block: "end",
-            inline: "nearest",
-        });
-    };
-
     const setCurrentVideo = (index) => {
         setPresentVideo(index);
     };
@@ -53,6 +56,7 @@ const Header = () => {
     return (
         <div id='header' className='lg:h-[810px] md:h-[720px] sm:h-[640px] h-[600px] 2xl:min-h-screen overflow-x-clip lg:flex lg:flex-col relative'>
             <div className="bg-black opacity-70 w-full h-full absolute top-0 left-0 z-[2]"></div>
+          {/*------------video------------*/}
             {videos.map((videoSrc, index) => (
                 <video
                     key={index}
@@ -94,7 +98,6 @@ const Header = () => {
                         </div>
                     ))}
                 </div>
-
                 <div className='bg-futureBtnbg bg-no-repeat bg-bgSize py-[11.5px] md:px-[62.5px] sm:px-[40px] px-[35px]'>
                     <p className='ff_inter text-lightWhite text-sm font-medium'>Future of Gaming</p>
                 </div>
@@ -103,11 +106,12 @@ const Header = () => {
             </div>
             <div className="absolute bottom-[3%] z-[4] left-0 right-0 flex items-center justify-center cursor-pointer">
                 <div
-                    onClick={scrollToSection}
+                    onClick={() => setToggleScroll(!toggleScroll)}
                     className="border border-lightRed lg:p-2 p-1 inline-block lg:h-[76px] h-[50px] rounded-[55px]"
                 >
                     <div
-                        className={`${toggleScroll ? "translate-y-[110%]" : "translate-y-0"} lg:w-[27px] lg:h-[27px] w-[17px] h-[17px] rounded-full bg-lightRed duration-300`}
+                        className={`${toggleScroll ? "translate-y-[110%]" : "translate-y-0"
+                            } lg:w-[27px] lg:h-[27px] w-[17px] h-[17px] rounded-full bg-lightRed duration-300`}
                     ></div>
                 </div>
             </div>
