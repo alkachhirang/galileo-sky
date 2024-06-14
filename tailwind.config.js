@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        futureBtnbg: "url(/assets/images/webp/futureBtn.png)",
+        futureBtnbg: "url(/assets/images/webp/futureBtn.webp)",
       },
       backgroundSize: {
         bgSize: "100% 100%",

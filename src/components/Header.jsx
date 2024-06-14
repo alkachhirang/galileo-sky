@@ -7,7 +7,7 @@ import Image from "next/image";
 const Header = () => {
     const [open, setOpen] = useState(true);
 
-//--------------toggle-btn--------------
+    //--------------toggle-btn--------------
     const [toggleScroll, setToggleScroll] = useState(false);
     useEffect(() => {
         if (toggleScroll === true) {
@@ -26,42 +26,59 @@ const Header = () => {
             });
         }
     });
-    //---------vedio--------------
-    const [heroVideo, setHeroVideo] = useState(0);
-    const videoRef = useRef(null);
+
+    //---------video--------------
+    const [presentVideo, setPresentVideo] = useState(0);
     const videos = [
         "/assets/video/game2.mp4",
         "/assets/video/game3.mp4",
         "/assets/video/game1.mp4",
     ];
     useEffect(() => {
-        const videoElement = videoRef.current;
-        if (videoElement) {
-            videoElement.src = videos[heroVideo];
-            videoElement.play();
-            const handleVideoEnded = () => {
-                setHeroVideo((prev) => (prev + 1) % videos.length);
-            };
+        const videoElements = videos.map((_, index) =>
+            document.getElementById(`video - ${ index }`)
+        );
+
+        const handleVideoEnded = () => {
+            setPresentVideo((prev) => (prev + 1) % videos.length);
+        };
+
+        videoElements.forEach((videoElement, index) => {
             videoElement.addEventListener("ended", handleVideoEnded);
-            return () => {
+            if (index !== presentVideo) {
+                videoElement.pause();
+                videoElement.currentTime = 0;
+            }
+        });
+
+        videoElements[presentVideo].play();
+
+        return () => {
+            videoElements.forEach((videoElement) => {
                 videoElement.removeEventListener("ended", handleVideoEnded);
-            };
-        }
-    }, [heroVideo]);
+            });
+        };
+    }, [presentVideo, videos]);
 
     return (
-        <div className='lg:h-[810px] md:h-[720px] sm:h-[640px] h-[600px] 2xl:min-h-screen overflow-x-clip lg:flex lg:flex-col relative'>
+        <div id='hero' className='lg:h-[810px] md:h-[720px] sm:h-[640px] h-[600px] 2xl:min-h-screen overflow-x-clip lg:flex lg:flex-col relative'>
             <div className="bg-black opacity-70 w-full h-full absolute top-0 left-0 z-[2]"></div>
-            <video
-                id="backvideo"
-                ref={videoRef}
-                muted
-                autoPlay
-                playsInline
-                className="w-full h-full object-cover absolute inset-0"
-            />
-            <Image src="/assets/images/webp/redDotted1.png" alt="dotted" width={273} height={70} className='absolute left-0 sm:top-[20%] top-[16%] lg:max-w-[273px] md:max-w-[200px] max-w-[150px] z-[3]' />
-            <Image src="/assets/images/webp/redDotted2.png" alt="dotted" width={112} height={53} className='absolute right-[4%] bottom-[7%] lg:max-w-[112px] md:max-w-[90px] max-w-[70px] z-[3]' />
+            {videos.map((videoSrc, index) => (
+                <video
+                    key={index}
+                    id={`video - ${index}`}
+                    src={videoSrc}
+                    muted
+                    autoPlay
+                    playsInline
+                    preload="auto"
+                    className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ${presentVideo === index ? "opacity-100" : "opacity-0"
+
+                        }`}
+                />
+            ))}
+            <Image src="/assets/images/webp/redDotted1.webp" alt="dotted" width={273} height={70} className='absolute left-0 sm:top-[20%] top-[16%] lg:max-w-[273px] md:max-w-[200px] max-w-[150px] z-[3]' />
+            <Image src="/assets/images/webp/redDotted2.webp" alt="dotted" width={112} height={53} className='absolute right-[4%] bottom-[7%] lg:max-w-[112px] md:max-w-[90px] max-w-[70px] z-[3]' />
             <div className={`absolute right-0 top-[25%] z-[4] duration-300 ${open ? "max-lg:right-[-80px]" : "right-0"}`}>
                 <div className={`relative transition-opacity ease-linear duration-300`}>
                     <span onClick={() => setOpen(!open)} className='sm:w-[15px] w-[8px] absolute left-[-10%] sm:left-[-20%] top-[30%] h-[145px] bg-lightWhite rounded-[30px_0px_0px_30px]'></span>
@@ -86,7 +103,7 @@ const Header = () => {
                 <h1 className='font-normal text-4xl sm:text-6xl md:text-7xl lg:text-8lg xl:text-9xl ff_opensans text-lightWhite text-center mt-4 lg:mt-[10px] leading-xsm mb-4'>BEYOND <span className='text-lightRed'>ENTERTAINMENT</span></h1>
                 <p className='ff_poppins font-normal text-sm sm:text-base text-lightWhite opacity-[90%] max-w-[809px] text-center sm:px-5 md:px-10 lg:px-0 !leading-normal'>Galileo Sky, founded by industry experts, is redefining the gaming landscape. With a blend of groundbreaking technology and immersive entertainment, we create world-class gaming experiences and thriving digital economies that captivate and inspire</p>
             </div>
-            <div className="absolute bottom-[2%] z-[4] left-0 right-0 flex items-center justify-center cursor-pointer">
+            <div className="absolute bottom-[3%] z-[4] left-0 right-0 flex items-center justify-center cursor-pointer">
                 <div
                     onClick={() => setToggleScroll(!toggleScroll)}
                     className="border border-lightRed lg:p-2 p-1 inline-block lg:h-[76px] h-[50px] rounded-[55px]"
@@ -97,7 +114,6 @@ const Header = () => {
                     ></div>
                 </div>
             </div>
-
         </div>
     );
 };

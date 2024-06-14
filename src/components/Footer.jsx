@@ -120,7 +120,7 @@ export default function Footer() {
                                 )}
                                 {showSuccessPopup && (
                                     <div className="fixed top-[50%] left-[50%] h-[200px] sm:h-[280px] md:h-[250px] w-full max-w-[300px] sm:max-w-[500px] md:max-w-[550px] lg:max-w-[400px] bg-white border border-solid border-darkRed p-[20px] sm:p-[40px] rounded  shadow-[0px_0px_10px_0px_#0000001A] flex justify-center items-center flex-col translate-x-[-50%] translate-y-[-50%] z-[50]">
-                                        <p className="sm:mb-[40px] mb-[25px] text-black text-xl sm:text-3xl font-semibold font-plusJkarta text-center leading-lg">Your form submitted successfully!</p>
+                                        <p className="sm:mb-[40px] mb-[25px] text-black text-xl sm:text-3xl font-medium ff_poppins text-center leading-lg">Email submitted successfully!</p>
                                         <div className="flex justify-center items-center">
                                             <div className='w-full'>
                                                 <button onClick={handlePopupClose} className="ff_poppins text-offWhite font-normal text-base rounded-[8px] py-[12px] px-[28px] md:py-[13px] md:px-[32px] hover:bg-transparent hover:text-darkRed border border-solid border-transparent hover:border-darkRed bg-darkRed transition-all duration-300 ease-linear ">Close</button>
