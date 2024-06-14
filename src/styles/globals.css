@@ -20,8 +20,15 @@
     font-family: "OpenSans", sans-serif !important;
 }
 
+.dropdown {
+    content-visibility: hidden;
+}
 
-.dropdown li:hover~div.dropcontent {
-    opacity: 100% !important;
-    height: auto !important;
+.navdrop:hover .dropdown {
+    padding: 12px 0 12px 0;
+    content-visibility: visible;
+    opacity: 1;
+    height: auto;
+    transition: all 300ms linear !important;
+    border: 1px solid #EB484C;
 }

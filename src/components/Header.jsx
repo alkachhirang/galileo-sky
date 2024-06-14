@@ -1,24 +1,60 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navbar from './Navbar';
 import { headerIcons } from './common/Helper';
 import Image from "next/image";
 
 const Header = () => {
-    const [open, setopen] = useState(true);
+    const [open, setOpen] = useState(true);
     const [isToggled, setIsToggled] = useState(false);
+    const [presentVideo, setPresentVideo] = useState(0);
+    const videoRef = useRef(null);
+
 
     const handleToggle = () => {
         setIsToggled(!isToggled);
     };
+
+    const videos = [
+        "/assets/video/game2.mp4",
+        "/assets/video/game3.mp4",
+        "/assets/video/game1.mp4",
+    ];
+
+    useEffect(() => {
+        const videoElement = videoRef.current;
+        if (videoElement) {
+            videoElement.src = videos[presentVideo];
+            videoElement.play();
+
+            const handleVideoEnded = () => {
+                setPresentVideo((prev) => (prev + 1) % videos.length);
+            };
+
+            videoElement.addEventListener("ended", handleVideoEnded);
+
+            return () => {
+                videoElement.removeEventListener("ended", handleVideoEnded);
+            };
+        }
+    }, [presentVideo]);
+
     return (
-        <div className='lg:h-[810px] md:h-[720px] sm:h-[640px] h-[600px] 2xl:min-h-screen overflow-x-clip lg:flex lg:flex-col relative bg-black'>
-            <Image src="/assets/images/webp/redDotted1.png" alt="dotted" width={273} height={70} className='absolute left-0 sm:top-[20%] top-[16%] lg:max-w-[273px] md:max-w-[200px] max-w-[150px]' />
-            <Image src="/assets/images/webp/redDotted2.png" alt="dotted" width={112} height={53} className='absolute right-[4%] bottom-[7%] lg:max-w-[112px] md:max-w-[90px] max-w-[70px]' />
+        <div className='lg:h-[810px] md:h-[720px] sm:h-[640px] h-[600px] 2xl:min-h-screen overflow-x-clip lg:flex lg:flex-col relative'>
+            <div className="bg-black opacity-70 w-full h-full absolute top-0 left-0 z-[2]"></div>
+            <video
+                id="backvideo"
+                ref={videoRef}
+                muted
+                autoPlay
+                playsInline
+                className="w-full h-full object-cover absolute inset-0"
+            />
+            <Image src="/assets/images/webp/redDotted1.png" alt="dotted" width={273} height={70} className='absolute left-0 sm:top-[20%] top-[16%] lg:max-w-[273px] md:max-w-[200px] max-w-[150px] z-[3]' />
+            <Image src="/assets/images/webp/redDotted2.png" alt="dotted" width={112} height={53} className='absolute right-[4%] bottom-[7%] lg:max-w-[112px] md:max-w-[90px] max-w-[70px] z-[3]' />
             <div className={`absolute right-0 top-[25%] z-10 duration-300 ${open ? "max-lg:right-[-80px]" : "right-0"}`}>
-                <div className={` relative transition-opacity ease-linear duration-300`}>
-                    <span onClick={() => setopen(!open)} className='sm:w-[15px] w-[8px] absolute left-[-10%] sm:left-[-20%] top-[30%] h-[145px] bg-lightWhite rounded-[30px_0px_0px_30px]'>
-                    </span>
+                <div className={`relative transition-opacity ease-linear duration-300`}>
+                    <span onClick={() => setOpen(!open)} className='sm:w-[15px] w-[8px] absolute left-[-10%] sm:left-[-20%] top-[30%] h-[145px] bg-lightWhite rounded-[30px_0px_0px_30px]'></span>
                     <div className="flex flex-col justify-center gap-[20px] md:gap-[28px] items-center bg-whiteGrey w-[80px] h-[300px] sm:h-[330px] md:h-[368px] px-[14px] sm:px-[22px]">
                         {headerIcons.map((icon, index) => {
                             return (
@@ -33,7 +69,7 @@ const Header = () => {
                 </div>
             </div>
             <Navbar />
-            <div className='container xl:max-w-[1164px] 2xl:flex-grow flex justify-center items-center flex-col mx-auto px-3 mt-[70px] sm:mt-[100px] md:mt-[164px] 2xl:mt-0'>
+            <div className='container xl:max-w-[1164px] 2xl:flex-grow flex justify-center items-center flex-col mx-auto px-3 mt-[70px] sm:mt-[100px] md:mt-[164px] 2xl:mt-0 relative z-10'>
                 <div className='bg-futureBtnbg bg-no-repeat bg-bgSize py-[11.5px] md:px-[62.5px] sm:px-[40px] px-[35px]'>
                     <p className='ff_inter text-lightWhite text-sm font-medium'>Future of Gaming</p>
                 </div>
@@ -50,7 +86,9 @@ const Header = () => {
                     ></div>
                 </div>
             </div>
+
         </div>
-    )
-}
+    );
+};
+
 export default Header;

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Arrow } from "./common/Icon";
-import { DropdownData } from "./common/Helper";
+import Dropdown from "./Dropdown";
 
 export default function Navbar() {
     const [nav, setNav] = useState(true);
@@ -17,10 +17,10 @@ export default function Navbar() {
     }, [nav]);
 
     return (
-        <div className="bg-blurWhite shadow-[0px_7px_10.9px_0px_#0000002E]">
+        <div className="bg-blurWhite shadow-[0px_7px_10.9px_0px_#0000002E] relative z-10">
             <div className="container mx-auto xl:max-w-[1164px] px-4 lg:px-3">
                 <ul className='flex items-center justify-center gap-[24px] max-lg:hidden'>
-                    <li>
+                    <li className="relative navdrop">
                         <Link
                             onClick={() => setNav(!nav)}
                             href="#games"
@@ -28,6 +28,7 @@ export default function Navbar() {
                         >
                             Games <Arrow />
                         </Link>
+                        <Dropdown />
                     </li>
                     <li>
                         <Link
@@ -81,7 +82,7 @@ export default function Navbar() {
                     <ul
                         className={`${nav ? "left-[-100%]" : "left-0 z-[50]"
                             } flex items-center gap-[24px] max-lg:bg-offBlack lg:flex-row max-lg:justify-center max-lg:flex-col top-0 max-lg:min-h-screen max-lg:w-full max-lg:fixed z-[4] lg:pl-[60px] xl:pl-[100px] transition-all duration-300 ease-linear`}>
-                        <li>
+                        <li className="relative navdrop">
                             <Link
                                 onClick={() => setNav(!nav)}
                                 href="#games"
@@ -89,6 +90,7 @@ export default function Navbar() {
                             >
                                 Games <Arrow />
                             </Link>
+                            <Dropdown />
                         </li>
                         <li>
                             <Link
@@ -139,6 +141,6 @@ export default function Navbar() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
