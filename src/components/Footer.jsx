@@ -65,7 +65,7 @@ export default function Footer() {
     }, [showSuccessPopup]);
 
     return (
-        <div className='lg:pt-[80px] md:pt-[64px] pt-[48px]'>
+        <div id="footer" className='lg:pt-[80px] md:pt-[64px] pt-[48px]'>
             <div className='container xl:max-w-[1164px] px-3 mx-auto'>
                 <div className="flex flex-row flex-wrap justify-between">
                     <div className="lg:w-5/12 w-full ">
