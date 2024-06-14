@@ -18,7 +18,7 @@ const Header = () => {
                 inline: "nearest",
             });
         } else {
-            const element = document.getElementById("hero");
+            const element = document.getElementById("header");
             element?.scrollIntoView({
                 behavior: "smooth",
                 block: "end",
@@ -61,7 +61,7 @@ const Header = () => {
     }, [presentVideo, videos]);
 
     return (
-        <div id='hero' className='lg:h-[810px] md:h-[720px] sm:h-[640px] h-[600px] 2xl:min-h-screen overflow-x-clip lg:flex lg:flex-col relative'>
+        <div id='header' className='lg:h-[810px] md:h-[720px] sm:h-[640px] h-[600px] 2xl:min-h-screen overflow-x-clip lg:flex lg:flex-col relative'>
             <div className="bg-black opacity-70 w-full h-full absolute top-0 left-0 z-[2]"></div>
             {videos.map((videoSrc, index) => (
                 <video
