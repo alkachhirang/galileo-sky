@@ -23,7 +23,7 @@ export default function Navbar() {
                     <li className="relative navdrop">
                         <Link
                             onClick={() => setNav(!nav)}
-                            href="#games"
+                            href="#"
                             className="text-lightWhite ff_poppins leading-normal text-base font-semibold flex items-center gap-1 after:h-[2px] after:w-[0] hover:after:w-full after:bg-lightWhite after:absolute relative after:transition-all after:duration-300 after:ease-linear left-0 after:left-[50%] hover:after:left-[0] after:bottom-[-2px] after:rounded-[10px] transition-all duration-300 ease-linear"
                         >
                             Games <Arrow />
@@ -80,9 +80,9 @@ export default function Navbar() {
                         />
                     </Link>
                     <ul
-                        className={` ${nav ? "left-[-100%]" : "left-0 !z-[50]"
+                        className={`$ {nav ? "left-[-100%]" : "left-0 !z-[50]"
                             } flex items-center gap-[24px] max-lg:bg-offBlack lg:flex-row max-lg:justify-center max-lg:flex-col top-0 max-lg:min-h-screen max-lg:w-full max-lg:fixed !z-[50] lg:pl-[60px] xl:pl-[100px] transition-all duration-300 ease-linear`}>
-                        <li className="relative">
+                        <li className="relative navdrop">
                             <Link
                                 onClick={() => setNav(!nav)}
                                 href="#games"
@@ -90,6 +90,7 @@ export default function Navbar() {
                             >
                                 Games <Arrow />
                             </Link>
+                            <Dropdown />
                         </li>
                         <li>
                             <Link
