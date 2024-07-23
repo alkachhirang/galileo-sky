@@ -17,6 +17,7 @@ const Header = () => {
             inline: "nearest",
         });
     }, [toggleScroll]);
+    
     //---------------video----------------
     const [presentVideo, setPresentVideo] = useState(0);
     const videos = [
